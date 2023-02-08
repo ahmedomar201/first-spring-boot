@@ -2,11 +2,31 @@ package com.luv2code.springboot.demo.firstspringboot.rest;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FunRestController {
+	
+	 //inject properties team and coach
+	
+	
+	@Value("${coach.name}")
+	private String coachName;
+	
+	@Value("${team.name}")
+	private String teamName;
+	
+	//expose the teaminfo
+	@GetMapping("/teaminfo")
+	
+	public String getTeamInfo() {
+		return "coach:" +coachName+"team:"+teamName;
+	}
+	
+	
+	
 	
 	//expose"/" that return hello
 	
@@ -31,6 +51,9 @@ public class FunRestController {
 		public String getDailyFortine() {
 			return "tatki tatki tatki ! ";
 		}
+		
+		
+		
 	 
  
 	
